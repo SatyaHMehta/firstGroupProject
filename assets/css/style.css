@@ -1,0 +1,110 @@
+  .holy-grail-grid {
+    display: grid;
+    grid-template-columns: 1fr 6fr 3fr;
+    grid-template-rows: 2fr 8fr 1fr;
+    grid-gap: 10px;
+    height: 100vh;
+  }
+  
+  .holy-grail-header,
+  .holy-grail-left,
+  .holy-grail-middle,
+  .holy-grail-right,
+  .holy-grail-footer {
+    padding: 1rem;
+    border: 1px solid #ededed;
+  }
+  
+  .holy-grail-header {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+  }
+  
+  .holy-grail-left {
+    @media screen and (max-width: 60em) {
+      grid-row-start: 2;
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+  }
+  
+  .holy-grail-middle {
+    @media screen and (max-width: 60em) {
+      grid-row-start: 3;
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+  }
+  
+  .right-nav {
+    @media screen and (max-width: 60em) {
+      grid-row-start: 4;
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+  }
+  
+  .holy-grail-footer {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+
+  .product-card {
+    background-color: #fefefe;
+    border: 1px solid #e6e6e6;
+    padding: 1rem;
+    margin-right: 1%;
+    width: 44%;
+    height: 27%;
+    text-align: center;
+    place-self: center;
+  }
+
+  .mid {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+      padding-left: 1%;
+  }
+
+  .product-card-thumbnail {
+    display: block;
+    position: relative;
+  }
+
+  .product-card-title {
+    font-family: 'Open sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.45rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  
+  .product-card-desc {
+    color: #8a8a8a;
+    display: block;
+    font-family: 'Open sans', sans-serif;
+    font-size: 0.85rem;
+  }
+  
+  .product-card-review {
+    color: #3e3e3e;
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.8rem;
+  }
+  
+  .input-group-rounded .input-group-field {
+    border-radius: 0 0 0 0;
+    padding-left: 1rem;
+  }
+  
+  .input-group-rounded .input-group-button .button {
+    border-radius: 0 0 0 0;
+    font-size: 0.8rem;
+  }
+  
