@@ -1,7 +1,9 @@
 var inputEl = document.querySelector("#search-bar")
 var formEl = document.querySelector("form")
 var barHistory = document.querySelector("#bar-history")
+var getRoute = document.querySelector("#generate-route")
 selectedBars = []
+barAddress = []
 
 function getBarVal() {
   const city = document.getElementById("search-bar").value;
@@ -24,7 +26,7 @@ function getBarVal() {
       return res.json();
     })
     .then((bars) => {
-      console.log(bars.businesses.length);
+      console.log(bars);
       console.log(bars.businesses[0].location.address1);
       console.log(bars.businesses[0].name);
       console.log(bars.businesses[0].phone);
@@ -86,7 +88,7 @@ function generateCards(bars) {
 // getRoute()
 
 formEl.addEventListener("submit", function (e) {
-  e.preventDefault()
+  // e.preventDefault() // removing this breaks the fetch request. keeping it generates duplicate buttons
   var searchValue = inputEl.value.trim()
 
   if(!searchValue) {
@@ -121,10 +123,23 @@ function generateBtns() {
 }
 
 loadLocal()
-
-function getAddress() {
+////////////////////////////////////////////////
+// function getAddress() {
+//   var address = address1
+//   var route = barAddress[i]
   
-}
+//   for (var i = 0; i < barHistory.length; i++) {
+//     var address = address1
+//     barAddress.push(address)
+//     var route = barAddress[i];
+//     locations.push(route)
+//   }
+// }
+
+// getRoute.addEventListener("click", function(e) {
+//   getAddress()
+// })
+/////////////////////////////////////////////////
 
 var map,
   dir;
@@ -136,8 +151,7 @@ map = L.map('map', {
 dir = MQ.routing.directions();
 dir.route({
   locations: [
-    '1600 pennsylvania ave, washington dc',
-    '935 pennsylvania ave, washington dc'
+    
   ]
 });
 map.addLayer(MQ.routing.routeLayer({
