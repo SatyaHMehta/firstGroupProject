@@ -90,9 +90,28 @@
   justify-content: center;
 }
 
-img {
+#card {
+  display:flex;
+  background-color: tan;
+  height: fit-content;
+  padding: 2%;
+  align-items: center;
+}
+#bar-image {
+  height: 12vw;
+  width: 11vh;
+  background-color: aqua;
+  margin-right:1%;
+}
+#card-information {
+  display: flex;
+  flex-direction: column;
+}
+
+/* img {
   display: inline-block;
   vertical-align: middle;
   max-width: 2%;
   height: auto;
-}
+} */
+
