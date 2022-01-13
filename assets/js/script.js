@@ -10,10 +10,13 @@ function getBarVal() {
     {
       headers: {
         // my api key
-        Authorization:
-          "Bearer GVUhoebZxMFnk5DtlEDRJjH5YkakjwmzRp-hi2zCxyKwXsYaBmvNDNQslyWp6SO6jPr5fFZGNzAWPGnT1o5w443vHe9Zxv7KNxIsZDFNYtgSLQEGmDTeNudeUtXdYXYx",
+        // Authorization:
+        //   "Bearer GVUhoebZxMFnk5DtlEDRJjH5YkakjwmzRp-hi2zCxyKwXsYaBmvNDNQslyWp6SO6jPr5fFZGNzAWPGnT1o5w443vHe9Zxv7KNxIsZDFNYtgSLQEGmDTeNudeUtXdYXYx",
         // back-up key
         // "Authorization": 'Bearer GVUhoebZxMFnk5DtlEDRJjH5YkakjwmzRp-hi2zCxyKwXsYaBmvNDNQslyWp6SO6jPr5fFZGNzAWPGnT1o5w443vHe9Zxv7KNxIsZDFNYtgSLQEGmDTeNudeUtXdYXYx'
+        //3rd api key
+        Authorization:
+          "bearer PUihWdj-17gdl98pdBSeYX0398u9kpVDNov6R1RBZgSdEJo-JHYcnkesMW68cQbq20N9W-Lyq9Sy8canmTCMMFpWPU4jaucRA05M3uYOBHJMYJkvJtb2iD2F3T_gYXYx"
       },
     }
   )
@@ -91,6 +94,7 @@ formEl.addEventListener("submit", function (e) {
   }
 
   selectedBars.push(searchValue)
+  inputEl.value = ""
   generateBtns()
 })
 
@@ -109,7 +113,7 @@ function generateBtns() {
 
       newBtn.textContent = bar
       newBtn.setAttribute("data-value", bar)
-      newBtn.setAttribute("class", "btn btn-outline-secondary")
+      newBtn.setAttribute("class", "button success expanded")
       barHistory.append(newBtn)
   }
 
