@@ -1,17 +1,7 @@
-var inputEl = document.querySelector("input[name=city")
+var inputEl = document.querySelector("#search-bar")
 var formEl = document.querySelector("form")
-var barHistory = document.querySelector("bar-history")
+var barHistory = document.querySelector("#bar-history")
 selectedBars = []
-
-function getBars() {
-  var getBars = "https://api.yelp.com/v3/businesses/search" + yelpKey;
-  fetch(yelpUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    });
-}
-getBars();
 
 function getBarVal() {
   const city = document.getElementById("search-bar").value;
@@ -92,7 +82,7 @@ function generateCards(bars) {
 // }
 // getRoute()
 
-formEl.addEventListener("click", function (e) {
+formEl.addEventListener("submit", function (e) {
   e.preventDefault()
   var searchValue = inputEl.value.trim()
 
