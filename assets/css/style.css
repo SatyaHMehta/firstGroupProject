@@ -1,127 +1,164 @@
-  * {
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: linear-gradient(
+    rgb(207, 140, 204),
+    rgb(170, 58, 170),
+    rgb(85, 14, 92)
+  );
+  opacity: 1;
+}
+.heading {
+  font-size: 60px;
+  color: #ededed;
+}
+.tagLine {
+  font-size: 30px;
+  color: aliceblue;
+  font-family: "Moon Dance", cursive;
+}
+
+.button {
+  padding: 5px;
+  width: 80%;
+}
+.holy-grail-grid {
+  display: grid;
+  grid-template-columns: 1fr 6fr 3fr;
+  grid-template-rows: 2fr 8fr 1fr;
+  grid-gap: 10px;
+  height: 100vh;
+}
+.input-group-field {
+  padding: 10px;
+}
+
+.input-group {
+  line-height: 1.5;
+}
+
+.holy-grail-header,
+.holy-grail-left,
+.holy-grail-middle,
+.holy-grail-right,
+.holy-grail-footer {
+  padding: 1rem;
+  border: 1px solid #ededed;
+}
+
+.holy-grail-header {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  text-align: center;
+  background-image: linear-gradient(
+    rgb(80, 78, 80),
+    rgb(39, 32, 39),
+    rgb(3, 3, 3)
+  );
+  border-bottom: solid 4px grey;
+  border-radius: 0 0 15px 15px;
+}
+
+.holy-grail-left {
+  @media screen and (max-width: 60em) {
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
   }
-  .holy-grail-grid {
-    display: grid;
-    grid-template-columns: 1fr 6fr 3fr;
-    grid-template-rows: 2fr 8fr 1fr;
-    grid-gap: 10px;
-    height: 100vh;
-  }
-  
-  .holy-grail-header,
-  .holy-grail-left,
-  .holy-grail-middle,
-  .holy-grail-right,
-  .holy-grail-footer {
-    padding: 1rem;
-    border: 1px solid #ededed;
-  }
-  
-  .holy-grail-header {
+}
+
+.holy-grail-middle {
+  @media screen and (max-width: 60em) {
+    grid-row-start: 3;
     grid-column-start: 1;
     grid-column-end: 4;
-    grid-row-start: 1;
   }
-  
-  .holy-grail-left {
-    @media screen and (max-width: 60em) {
-      grid-row-start: 2;
-      grid-column-start: 1;
-      grid-column-end: 2;
-    }
-  }
-  
-  .holy-grail-middle {
-    @media screen and (max-width: 60em) {
-      grid-row-start: 3;
-      grid-column-start: 1;
-      grid-column-end: 4;
-    }
-  }
-  
-  .right-nav {
-    @media screen and (max-width: 60em) {
-      grid-row-start: 4;
-      grid-column-start: 1;
-      grid-column-end: 4;
-    }
-  }
-  
-  .holy-grail-footer {
+}
+
+.right-nav {
+  @media screen and (max-width: 60em) {
+    grid-row-start: 4;
     grid-column-start: 1;
     grid-column-end: 4;
   }
+}
 
-  .product-card {
-    background-color: #fefefe;
-    border: 1px solid #e6e6e6;
-    padding: 1rem;
-    margin-right: 1%;
-    width: 44%;
-    height: 27%;
-    text-align: center;
-    place-self: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
+.holy-grail-footer {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
 
-  .mid {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      justify-content: center;
-      padding-left: 1%;
-  }
+.product-card {
+  background-color: #fefefe;
+  border: 1px solid #e6e6e6;
+  padding: 1rem;
+  margin-right: 1%;
+  width: 44%;
+  height: 27%;
+  text-align: center;
+  place-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
-  .product-card-thumbnail {
-    display: block;
-    position: relative;
-  }
+.mid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  padding-left: 1%;
+}
 
-  .product-card-title {
-    font-family: 'Open sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    line-height: 1.45rem;
-    margin-top: 1rem;
-    margin-bottom: 0;
-  }
-  
-  .product-card-desc {
-    color: #8a8a8a;
-    display: block;
-    font-family: 'Open sans', sans-serif;
-    font-size: 0.85rem;
-  }
-  
-  .product-card-review {
-    color: #3e3e3e;
-    display: inline-block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-top: 0.8rem;
-  }
-  
-  .input-group-rounded .input-group-field {
-    border-radius: 0 0 0 0;
-    padding-left: 1rem;
-  }
-  
-  .input-group-rounded .input-group-button .button {
-    border-radius: 0 0 0 0;
-    font-size: 0.8rem;
-  }
-  
-  .barImage {
-    height: 9vw;
-    width: 9vw;
-  }
-  .product-card-details {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    text-align: left;
-  }
+.product-card-thumbnail {
+  display: block;
+  position: relative;
+}
+
+.product-card-title {
+  font-family: "Open sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.45rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.product-card-desc {
+  color: #8a8a8a;
+  display: block;
+  font-family: "Open sans", sans-serif;
+  font-size: 0.85rem;
+}
+
+.product-card-review {
+  color: #3e3e3e;
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.8rem;
+}
+
+.input-group-rounded .input-group-field {
+  border-radius: 0 0 0 0;
+  padding-left: 1rem;
+}
+
+.input-group-rounded .input-group-button .button {
+  border-radius: 0 0 0 0;
+  font-size: 0.8rem;
+}
+
+.barImage {
+  height: 9vw;
+  width: 9vw;
+}
+.product-card-details {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: left;
+}
