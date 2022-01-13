@@ -36,43 +36,52 @@ function getBarVal() {
       console.log(bars.businesses[0].image_url);
       var numbOfBars = bars.businesses;
       console.log(numbOfBars.length);
+      for (var i = 0; i < bars.businesses.length; i++) {
+        generateCards(bars, i);
+      }
+      
     });
 }
-function generateCards(bars) {
+function generateCards(bars, i) {
   let barsDivEl = document.getElementById("bars-div");
+  let barCardEl = document.createElement("div");
+  barCardEl.setAttribute('id', 'card');
+  barsDivEl.appendChild(barCardEl);
+  let barImageEl = document.createElement("img");
+  barImageEl.setAttribute('id', "bar-image");
+  barImageEl.src = bars.businesses[i].image_url;
+  barCardEl.appendChild(barImageEl);
+  let barInfoEl = document.createElement('div');
+  barInfoEl.setAttribute('id', "card-information");
+  barCardEl.appendChild(barInfoEl);
 
   let barInfo = [
-    document.createElement("div"),
     document.createElement("h2"),
     document.createElement("span"),
     document.createElement("span"),
     document.createElement("span"),
-    document.createElement("a"),
     document.createElement("span"),
   ];
 
   let barData = [
-    bars.businesses[0].name,
-    bars.businesses[0].location.address1,
-    bars.businesses[0].phone,
-    bars.businesses[0].rating,
-    bars.businesses[0].image_url,
-    bars.businesses[0].review_count,
+    bars.businesses[i].name,
+    bars.businesses[i].location.address1,
+    bars.businesses[i].phone,
+    bars.businesses[i].rating,
+    bars.businesses[i].review_count,
   ];
 
   let barId = [
-    "card",
     "bar-name",
     "bar-address",
     "bar-phone-number",
     "bar-rating",
-    "bar-image",
     "bar-review-count",
   ];
   barInfo.forEach((element, i) => {
     element.setAttribute("id", barId[i]);
     element.textContent = barData[i];
-    barsDivEl.appendChild(element);
+    barInfoEl.appendChild(element);
   });
 }
 // function getRoute() {
