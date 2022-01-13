@@ -97,7 +97,7 @@ function generateCards(bars, i) {
 // getRoute()
 
 formEl.addEventListener("submit", function (e) {
-  // e.preventDefault() // removing this breaks the fetch request. keeping it generates duplicate buttons
+  e.preventDefault()
   var searchValue = inputEl.value.trim()
 
   if(!searchValue) {
@@ -118,6 +118,7 @@ function loadLocal() {
 }
 
 function generateBtns() {
+  barHistory.innerHTML = ""
   for (var i = 0; i < selectedBars.length; i++) {
       var bar = selectedBars[i]
       var newBtn = document.createElement("button")
