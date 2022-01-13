@@ -78,3 +78,12 @@
   font-size: 0.8rem;
 }
 
+#map {
+  height: 50vh;
+  width: 100%;
+  position: relative;
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+
