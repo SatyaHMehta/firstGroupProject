@@ -3,7 +3,6 @@ var formEl = document.querySelector("form");
 var barHistory = document.querySelector("#bar-history");
 var getRoute = document.querySelector("#generate-route");
 var barDiv = document.querySelector("#bars-div");
-selectedBars = [];
 barAddress = [];
 var addresses = [];
 
@@ -70,7 +69,8 @@ function generateCards(bars, i) {
 
   let barData = [
     bars.businesses[i].name,
-    bars.businesses[i].location.address1,
+    bars.businesses[i].location.display_address[0] + " " + bars.businesses[i].location.display_address[1],
+    console.log(bars.businesses[i].location.display_address[0],bars.businesses[i].location.display_address[1]),
     bars.businesses[i].phone,
     bars.businesses[i].rating,
     bars.businesses[i].review_count,
@@ -137,6 +137,10 @@ barDiv.addEventListener("click", function (e) {
     newBtn.setAttribute("class", "button success expanded");
     barHistory.append(newBtn);
     localStorage.setItem("bars", JSON.stringify(barAddress));
+    // (e).preventDefault;
+    // const selectedBars =document.querySelectorAll('#cardEl');
+    // selectedBars.forEach((bar) =>
+    // addresses.push(bar.getAttribute('data-value')))
   }
 });
 
@@ -159,7 +163,33 @@ loadLocal();
 // })
 /////////////////////////////////////////////////
 
-var map, dir;
+// var map, dir;
+// map = L.map("map", {
+//   layers: MQ.mapLayer(),
+//   center: [38.895345, -77.030101],
+//   zoom: 15,
+// });
+// dir = MQ.routing.directions();
+// dir.route({
+//   locations: [
+//     '49 n Orange Ave',
+//     '26 Wall St'
+//   ]
+// });
+// map.addLayer(
+//   MQ.routing.routeLayer({
+//     directions: dir,
+//     fitBounds: true,
+//   })
+// );
+
+getRoute.addEventListener('click', function(each){
+  each.preventDefault;
+  const selectedBars =document.querySelectorAll('#cardEl');
+  selectedBars.forEach((bar) =>
+  addresses.push(bar.getAttribute('data-value')))
+  
+  var map, dir;
 map = L.map("map", {
   layers: MQ.mapLayer(),
   center: [38.895345, -77.030101],
@@ -167,7 +197,19 @@ map = L.map("map", {
 });
 dir = MQ.routing.directions();
 dir.route({
-  locations: [],
+
+  locations: [
+    addresses[0],
+    addresses[1],
+    addresses[2],
+    addresses[3],
+    addresses[4],
+    addresses[5],
+    addresses[6],
+    addresses[7],
+    addresses[8],
+    addresses[9],
+]
 });
 map.addLayer(
   MQ.routing.routeLayer({
@@ -175,11 +217,4 @@ map.addLayer(
     fitBounds: true,
   })
 );
-
-getRoute.addEventListener('click', function(each){
-  each.preventDefault;
-  const selectedBars =document.querySelectorAll('#cardEl');
-  selectedBars.forEach((bar) =>
-  addresses.push(bar.getAttribute('data-value')))
 })
-
