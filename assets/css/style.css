@@ -14,8 +14,9 @@ body {
   font-family: "Times New Roman", Times, serif;
   font-weight: bold;
 }
+
 .tagLine {
-  font-size: 35px;
+  font-size: 40px;
   color: aliceblue;
   font-family: "Moon Dance", cursive;
   font-weight: bold;
@@ -41,11 +42,24 @@ body {
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 1;
-  background-image: radial-gradient(black, grey);
-  background-image: url("https://www.westend61.de/images/0001400552pw/japan-osaka-prefecture-osaka-aerial-view-of-city-at-night-EHF00353.jpg");
   text-align: center;
   border-radius: 0 0 20px 20px;
   border: black solid;
+  background: linear-gradient(-45deg, #152a83, #5e182f, #586972, #638cbb);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .holy-grail-left {
@@ -87,6 +101,7 @@ body {
   flex-direction: row;
   justify-content: center;
   padding-left: 1%;
+  justify-content: space-around;
 }
 
 .barImage {
@@ -115,20 +130,33 @@ body {
 
 #card {
   display: flex;
-  background-color: tan;
+  background-color: rgba(192, 192, 192, 0.89);
   height: fit-content;
   padding: 2%;
   align-items: center;
+  border: rgba(2, 2, 2, 0.377) solid;
+  width: 20rem;
+  flex-wrap: wrap;
+  margin-bottom: 5%;
 }
+#card:hover {
+  transform: scale(1.1);
+}
+
 #bar-image {
-  height: 12vw;
-  width: 11vh;
+  height: 15vh;
+  width: 10vw;
   background-color: aqua;
   margin-right: 1%;
+  align-items: center;
 }
 #card-information {
   display: flex;
   flex-direction: column;
+  font-size: 16px;
+}
+#bar-name {
+  font-size: 20px;
 }
 
 /* img {
@@ -137,3 +165,38 @@ body {
   max-width: 2%;
   height: auto;
 } */
+
+.addBtn {
+  color: white;
+  background-color: rgb(51, 47, 47);
+  padding: 3%;
+  display: inline-block;
+  animation: wiggle 2s linear infinite;
+  border-radius: 10px;
+}
+
+@keyframes wiggle {
+  0%,
+  7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%,
+  100% {
+    transform: rotateZ(0);
+  }
+}
