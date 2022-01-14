@@ -107,16 +107,14 @@ formEl.addEventListener("submit", function (e) {
   if (!searchValue) {
     return;
   }
-  
+
   inputEl.value = "";
-  generateBtns();
 });
 
 function loadLocal() {
   var barHistoryBtns = localStorage.getItem("bars");
   if (barHistoryBtns) {
     selectedBars = JSON.parse(barHistoryBtns);
-    generateBtns();
   }
 }
 
@@ -137,7 +135,6 @@ barDiv.addEventListener("click", function (e) {
     newBtn.setAttribute("class", "button success expanded");
     barHistory.append(newBtn);
     localStorage.setItem("bars", JSON.stringify(barAddress));
-    barHistory.innerHTML = "";
   }
 });
 
