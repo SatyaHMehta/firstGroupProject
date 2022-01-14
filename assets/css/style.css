@@ -101,7 +101,8 @@ body {
   flex-direction: row;
   justify-content: center;
   padding-left: 1%;
-  justify-content: space-around;
+  justify-content: space-around;//--------
+  overflow: auto; //----------
 }
 
 .barImage {
@@ -134,13 +135,16 @@ body {
   height: fit-content;
   padding: 2%;
   align-items: center;
-  border: rgba(2, 2, 2, 0.377) solid;
-  width: 20rem;
-  flex-wrap: wrap;
-  margin-bottom: 5%;
+  border: rgba(2, 2, 2, 0.377) solid;//--
+  width: 20rem;//--
+  flex-wrap: wrap;//--
+  margin-bottom: 5%;//--
 }
 #card:hover {
   transform: scale(1.1);
+/*   width: 50%;
+  height: auto; */
+
 }
 
 #bar-image {
