@@ -107,8 +107,7 @@ formEl.addEventListener("submit", function (e) {
   if (!searchValue) {
     return;
   }
-
-  selectedBars.push(searchValue);
+  
   inputEl.value = "";
   generateBtns();
 });
@@ -121,20 +120,6 @@ function loadLocal() {
   }
 }
 
-function generateBtns() {
-  barHistory.innerHTML = "";
-  for (var i = 0; i < selectedBars.length; i++) {
-    var bar = selectedBars[i];
-    var newBtn = document.createElement("button");
-
-    newBtn.textContent = bar;
-    newBtn.setAttribute("data-value", bar);
-    newBtn.setAttribute("class", "button success expanded");
-    barHistory.append(newBtn);
-  }
-
-  localStorage.setItem("bars", JSON.stringify(selectedBars));
-}
 
 barDiv.addEventListener("click", function (e) {
   //console.log("Hey")
@@ -151,6 +136,8 @@ barDiv.addEventListener("click", function (e) {
     newBtn.setAttribute("data-value", barAddress);
     newBtn.setAttribute("class", "button success expanded");
     barHistory.append(newBtn);
+    localStorage.setItem("bars", JSON.stringify(barAddress));
+    barHistory.innerHTML = "";
   }
 });
 
