@@ -1,9 +1,10 @@
-var inputEl = document.querySelector("#search-bar")
-var formEl = document.querySelector("form")
-var barHistory = document.querySelector("#bar-history")
-var getRoute = document.querySelector("#generate-route")
-selectedBars = []
-barAddress = []
+var inputEl = document.querySelector("#search-bar");
+var formEl = document.querySelector("form");
+var barHistory = document.querySelector("#bar-history");
+var getRoute = document.querySelector("#generate-route");
+var barDiv = document.querySelector("#bars-div");
+selectedBars = [];
+barAddress = [];
 
 function getBarVal() {
   const city = document.getElementById("search-bar").value;
@@ -18,7 +19,7 @@ function getBarVal() {
         // "Authorization": 'Bearer GVUhoebZxMFnk5DtlEDRJjH5YkakjwmzRp-hi2zCxyKwXsYaBmvNDNQslyWp6SO6jPr5fFZGNzAWPGnT1o5w443vHe9Zxv7KNxIsZDFNYtgSLQEGmDTeNudeUtXdYXYx'
         //3rd api key
         Authorization:
-          "bearer PUihWdj-17gdl98pdBSeYX0398u9kpVDNov6R1RBZgSdEJo-JHYcnkesMW68cQbq20N9W-Lyq9Sy8canmTCMMFpWPU4jaucRA05M3uYOBHJMYJkvJtb2iD2F3T_gYXYx"
+          "bearer PUihWdj-17gdl98pdBSeYX0398u9kpVDNov6R1RBZgSdEJo-JHYcnkesMW68cQbq20N9W-Lyq9Sy8canmTCMMFpWPU4jaucRA05M3uYOBHJMYJkvJtb2iD2F3T_gYXYx",
       },
     }
   )
@@ -39,21 +40,24 @@ function getBarVal() {
       for (var i = 0; i < bars.businesses.length; i++) {
         generateCards(bars, i);
       }
-      
     });
 }
 function generateCards(bars, i) {
   let barsDivEl = document.getElementById("bars-div");
   let barCardEl = document.createElement("div");
-  barCardEl.setAttribute('id', 'card');
+  barCardEl.setAttribute("id", "card");
   barsDivEl.appendChild(barCardEl);
   let barImageEl = document.createElement("img");
-  barImageEl.setAttribute('id', "bar-image");
+  barImageEl.setAttribute("id", "bar-image");
   barImageEl.src = bars.businesses[i].image_url;
   barCardEl.appendChild(barImageEl);
-  let barInfoEl = document.createElement('div');
-  barInfoEl.setAttribute('id', "card-information");
+  let barInfoEl = document.createElement("div");
+  barInfoEl.setAttribute("id", "card-information");
   barCardEl.appendChild(barInfoEl);
+  let addBtn = document.createElement("button");
+  addBtn.innerHTML = "Add";
+  addBtn.classList.add("addBtn");
+  barCardEl.appendChild(addBtn);
 
   let barInfo = [
     document.createElement("h2"),
@@ -97,47 +101,65 @@ function generateCards(bars, i) {
 // getRoute()
 
 formEl.addEventListener("submit", function (e) {
-  e.preventDefault()
-  var searchValue = inputEl.value.trim()
+  e.preventDefault();
+  var searchValue = inputEl.value.trim();
 
-  if(!searchValue) {
-      return
+  if (!searchValue) {
+    return;
   }
 
-  selectedBars.push(searchValue)
-  inputEl.value = ""
-  generateBtns()
-})
+  selectedBars.push(searchValue);
+  inputEl.value = "";
+  generateBtns();
+});
 
 function loadLocal() {
-  var barHistoryBtns = localStorage.getItem("bars")
+  var barHistoryBtns = localStorage.getItem("bars");
   if (barHistoryBtns) {
-      selectedBars = JSON.parse(barHistoryBtns)
-      generateBtns()
+    selectedBars = JSON.parse(barHistoryBtns);
+    generateBtns();
   }
 }
 
 function generateBtns() {
-  barHistory.innerHTML = ""
+  barHistory.innerHTML = "";
   for (var i = 0; i < selectedBars.length; i++) {
-      var bar = selectedBars[i]
-      var newBtn = document.createElement("button")
+    var bar = selectedBars[i];
+    var newBtn = document.createElement("button");
 
-      newBtn.textContent = bar
-      newBtn.setAttribute("data-value", bar)
-      newBtn.setAttribute("class", "button success expanded")
-      barHistory.append(newBtn)
+    newBtn.textContent = bar;
+    newBtn.setAttribute("data-value", bar);
+    newBtn.setAttribute("class", "button success expanded");
+    barHistory.append(newBtn);
   }
 
-  localStorage.setItem("bars", JSON.stringify(selectedBars))
+  localStorage.setItem("bars", JSON.stringify(selectedBars));
 }
 
-loadLocal()
+barDiv.addEventListener("click", function (e) {
+  //console.log("Hey")
+  if (e.target.matches(".addBtn")) {
+    console.log(e);
+    //console.log(this)
+    var clickedBtn = e.target;
+    var barName = clickedBtn.parentElement.children[1].children[0].innerHTML;
+    var barAddress = clickedBtn.parentElement.children[1].children[1].innerHTML;
+    console.log(barName);
+    var newBtn = document.createElement("button");
+
+    newBtn.textContent = barName;
+    newBtn.setAttribute("data-value", barAddress);
+    newBtn.setAttribute("class", "button success expanded");
+    barHistory.append(newBtn);
+  }
+});
+
+loadLocal();
 ////////////////////////////////////////////////
 // function getAddress() {
 //   var address = address1
 //   var route = barAddress[i]
-  
+
 //   for (var i = 0; i < barHistory.length; i++) {
 //     var address = address1
 //     barAddress.push(address)
@@ -151,21 +173,19 @@ loadLocal()
 // })
 /////////////////////////////////////////////////
 
-var map,
-  dir;
-map = L.map('map', {
+var map, dir;
+map = L.map("map", {
   layers: MQ.mapLayer(),
-  center: [ 38.895345, -77.030101 ],
-  zoom: 15
+  center: [38.895345, -77.030101],
+  zoom: 15,
 });
 dir = MQ.routing.directions();
 dir.route({
-  locations: [
-    
-  ]
+  locations: [],
 });
-map.addLayer(MQ.routing.routeLayer({
-  directions: dir,
-  fitBounds: true
-}));
-
+map.addLayer(
+  MQ.routing.routeLayer({
+    directions: dir,
+    fitBounds: true,
+  })
+);
