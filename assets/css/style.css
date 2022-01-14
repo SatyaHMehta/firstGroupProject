@@ -2,6 +2,24 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  background-image: radial-gradient(white, grey);
+  font-family: "Luxurious Roman", cursive;
+}
+
+.heading {
+  font-size: 60px;
+  color: rgb(247, 245, 243);
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+.tagLine {
+  font-size: 35px;
+  color: aliceblue;
+  font-family: "Moon Dance", cursive;
+  font-weight: bold;
+}
 .holy-grail-grid {
   display: grid;
   grid-template-columns: 2fr 6fr 3fr;
@@ -23,6 +41,11 @@
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 1;
+  background-image: radial-gradient(black, grey);
+  background-image: url("https://www.westend61.de/images/0001400552pw/japan-osaka-prefecture-osaka-aerial-view-of-city-at-night-EHF00353.jpg");
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+  border: black solid;
 }
 
 .holy-grail-left {
@@ -91,7 +114,7 @@
 }
 
 #card {
-  display:flex;
+  display: flex;
   background-color: tan;
   height: fit-content;
   padding: 2%;
@@ -101,7 +124,7 @@
   height: 12vw;
   width: 11vh;
   background-color: aqua;
-  margin-right:1%;
+  margin-right: 1%;
 }
 #card-information {
   display: flex;
@@ -114,4 +137,3 @@
   max-width: 2%;
   height: auto;
 } */
-
