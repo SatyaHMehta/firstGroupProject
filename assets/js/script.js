@@ -5,11 +5,12 @@ var getRoute = document.querySelector("#generate-route");
 var barDiv = document.querySelector("#bars-div");
 selectedBars = [];
 barAddress = [];
+var addresses = [];
 
 function getBarVal() {
   const city = document.getElementById("search-bar").value;
   fetch(
-    `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${city}&categories=danceclubs`,
+    ` https://floating-headland-95050.herokuapp.com/api.yelp.com/v3/businesses/search?location=${city}&categories=danceclubs`,
     {
       headers: {
         // my api key
@@ -131,6 +132,7 @@ barDiv.addEventListener("click", function (e) {
     var newBtn = document.createElement("button");
 
     newBtn.textContent = barName;
+    newBtn.setAttribute("id", "cardEl")
     newBtn.setAttribute("data-value", barAddress);
     newBtn.setAttribute("class", "button success expanded");
     barHistory.append(newBtn);
@@ -173,3 +175,11 @@ map.addLayer(
     fitBounds: true,
   })
 );
+
+getRoute.addEventListener('click', function(each){
+  each.preventDefault;
+  const selectedBars =document.querySelectorAll('#cardEl');
+  selectedBars.forEach((bar) =>
+  addresses.push(bar.getAttribute('data-value')))
+})
+
