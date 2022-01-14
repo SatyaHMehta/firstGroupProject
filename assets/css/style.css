@@ -92,7 +92,6 @@ body {
   background-color: #5b6467;
   background-image: linear-gradient(315deg, #5b6467 0%, #8b939a 74%);
   color: white;
-  /* text-align: center; */
   display: flex;
   justify-content: center;
   
@@ -104,8 +103,8 @@ body {
   flex-direction: row;
   justify-content: center;
   padding-left: 1%;
-  justify-content: space-around;//--------
-  overflow: auto; //----------
+  justify-content: space-around;
+  overflow: auto;
 }
 
 .barImage {
@@ -138,14 +137,14 @@ body {
   height: fit-content;
   padding: 2%;
   align-items: center;
-  border: rgba(2, 2, 2, 0.377) solid;//--
-  width: 20rem;//--
-  flex-wrap: wrap;//--
-  margin-bottom: 5%;//--
+  border: rgba(2, 2, 2, 0.377) solid;
+  width: 20rem;
+  flex-wrap: wrap;
+  margin-bottom: 5%;
 }
 #card:hover {
   transform: scale(1.1);
-/*   width: 50%;
+  /* width: 50%;
   height: auto; */
 
 }
@@ -172,7 +171,6 @@ body {
   max-width: 2%;
   height: auto;
 } */
-//----------------------------------------------------------------------
 #insta {
   display: inline-block;
   vertical-align: middle;
@@ -231,4 +229,3 @@ h3{
     transform: rotateZ(0);
   }
 }
-//----------------------------------------------------------------------
