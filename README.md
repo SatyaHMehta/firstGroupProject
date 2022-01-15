@@ -33,7 +33,9 @@ Our goal was to build a app that would allow a user to enter a city in the searc
 
 ## Usage 
 
-link to deployed application: (insert link once satya makes github pages)
+link to deployed application: https://satyahmehta.github.io/firstGroupProject/
+
+link to Project Repo: https://github.com/SatyaHMehta/firstGroupProject.git
 
 **Images of App:**
 
