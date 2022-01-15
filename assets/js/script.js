@@ -7,6 +7,7 @@ var barDiv = document.querySelector("#bars-div");
 var removeCard = document.querySelector("#cardEl")
 barAddress = [];
 var addresses = [];
+barTitle = []
 
 function getBarVal() {
   const city = document.getElementById("search-bar").value;
@@ -91,35 +92,41 @@ function generateCards(bars, i) {
     barInfoEl.appendChild(element);
   });
 }
-// function getRoute() {
-//     var mapquestAPIKey = "WeZEsw4t2Noh16Z4ncHYhvHRntkQzwpG"
-//     var getRoute = "http://www.mapquestapi.com/directions/v2/route?key=" + mapquestAPIKey + "&from=" + selectedBars[0] + "&to=" + selectedBars[1,2,3,4]
-
-//     fetch(getRoute).then(function(response) {
-//         return response.json()
-//     }).then(function(data) {
-//         console.log(data)
-//     })
-// }
-// getRoute()
 
 formEl.addEventListener("submit", function (e) {
   e.preventDefault();
   var searchValue = inputEl.value.trim();
 
   if (!searchValue) {
-    return;
+    return ;
   }
 
   inputEl.value = "";
 });
 
-function loadLocal() {
-  var barHistoryBtns = localStorage.getItem("bars");
-  if (barHistoryBtns) {
-    selectedBars = JSON.parse(barHistoryBtns);
-  }
-}
+// function loadLocal() {
+//   var barHistoryBtns = localStorage.getItem("barname");
+//   if (barHistoryBtns) {
+//     barName = JSON.parse(barHistoryBtns);
+//     loadLocalBtn()
+//   }
+// }
+
+// function loadLocalBtn() {
+//   for (var i = 0; i < barName.length; i++) {
+    
+//     title = barTitle[i]
+  
+//     var newBtn = document.createElement("button");
+
+//     newBtn.textContent = title;
+//     newBtn.setAttribute("id", "cardEl")
+//     newBtn.setAttribute("data-value", barAddress);
+//     newBtn.setAttribute("class", "button success expanded");
+//     newBtn.setAttribute("onclick", "removeBtn()")
+//     barHistory.append(newBtn);
+//   }
+// }
 
 
 barDiv.addEventListener("click", function (e) {
@@ -140,54 +147,12 @@ barDiv.addEventListener("click", function (e) {
     newBtn.setAttribute("onclick", "removeBtn()")
     barHistory.append(newBtn);
     localStorage.setItem("bars", JSON.stringify(barAddress));
-    // (e).preventDefault;
-    // const selectedBars =document.querySelectorAll('#cardEl');
-    // selectedBars.forEach((bar) =>
-    // addresses.push(bar.getAttribute('data-value')))
+    localStorage.setItem("barname", JSON.stringify(barTitle))
+
+    barTitle.push(barName)
   }
 });
 
-loadLocal();
-////////////////////////////////////////////////
-// function getAddress() {
-//   var address = address1
-//   var route = barAddress[i]
-
-//   for (var i = 0; i < barHistory.length; i++) {
-//     var address = address1
-//     barAddress.push(address)
-//     var route = barAddress[i];
-//     locations.push(route)
-//   }
-// }
-
-// getRoute.addEventListener("click", function(e) {
-//   getAddress()
-// })
-/////////////////////////////////////////////////
-
-// var map, dir;
-// map = L.map("map", {
-//   layers: MQ.mapLayer(),
-//   center: [38.895345, -77.030101],
-//   zoom: 15,
-// });
-// dir = MQ.routing.directions();
-// dir.route({
-//   locations: [
-//     '49 n Orange Ave',
-//     '26 Wall St'
-//   ]
-// });
-// map.addLayer(
-//   MQ.routing.routeLayer({
-//     directions: dir,
-//     fitBounds: true,
-//   })
-// );
-// removeCard.addEventListener("click", function(e) {
-
-// })
 function removeBtn() {
   var elem = document.querySelector('#cardEl');
   elem.parentNode.removeChild(elem);
@@ -233,3 +198,4 @@ map.addLayer(
   })
 );
 })
+// loadLocal()
