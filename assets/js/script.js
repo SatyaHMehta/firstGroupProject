@@ -2,7 +2,9 @@ var inputEl = document.querySelector("#search-bar");
 var formEl = document.querySelector("form");
 var barHistory = document.querySelector("#bar-history");
 var getRoute = document.querySelector("#generate-route");
+var clearList = document.querySelector("#clear-list")
 var barDiv = document.querySelector("#bars-div");
+var removeCard = document.querySelector("#cardEl")
 barAddress = [];
 var addresses = [];
 
@@ -135,6 +137,7 @@ barDiv.addEventListener("click", function (e) {
     newBtn.setAttribute("id", "cardEl")
     newBtn.setAttribute("data-value", barAddress);
     newBtn.setAttribute("class", "button success expanded");
+    newBtn.setAttribute("onclick", "removeBtn()")
     barHistory.append(newBtn);
     localStorage.setItem("bars", JSON.stringify(barAddress));
     // (e).preventDefault;
@@ -182,6 +185,18 @@ loadLocal();
 //     fitBounds: true,
 //   })
 // );
+// removeCard.addEventListener("click", function(e) {
+
+// })
+function removeBtn() {
+  var elem = document.querySelector('#cardEl');
+  elem.parentNode.removeChild(elem);
+ }
+
+clearList.addEventListener("click", function(e) {
+  (e).preventDefault
+  barHistory.innerHTML = ""
+})
 
 getRoute.addEventListener('click', function(each){
   each.preventDefault;
