@@ -16,10 +16,20 @@ Our goal was to build a app that would allow a user to enter a city in the searc
 
 ```
 ## Table of Contents
-
+* [Technologies-Used](#technologies-Used)
 * [Usage](#usage)
 * [Contributing](#contributing)
 * [License](#license)
+
+## Technologies-Used
+
+* Html
+* Css
+* Javascript
+* Foundation
+* Yelp Api
+* MapQuest Api
+
 
 ## Usage 
 
