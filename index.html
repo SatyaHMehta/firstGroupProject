@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>BarHop</title>
   </head>
-  <body>
+  <body onload="loadLocal()">
 
     <div class="holy-grail-grid">
       <div class="holy-grail-header">
@@ -21,7 +21,7 @@
       <form class="holy-grail-left">
         <h2 class="text-center">Search for a City</h2>
         <div class="input-group input-group-rounded">
-          <input class="input-group-field" id="search-bar" type="search">
+          <input class="input-group-field" name="city" id="search-bar" type="search">
           <div class="input-group-button">
             <input type="submit" onclick="getBarVal()" class="button primary" value="Search">
           </div>
@@ -31,7 +31,20 @@
         <input type="submit" id="generate-route" class="button secondary expanded" value="Generate Route"></input>
       </form>
     
-      <div class="mid" id="bars-div"></div>
+      <div class="mid" id="bars-div">
+        <!-- <div class="responsive-blog-post">
+            <img id="landimg" src="./Images/BarHopping2.jpg">
+            <h4 id="bold" class="text-center">BarHop wins App of the Year for the 12th time!</h4>
+            <p>
+              Magna fringilla urna porttitor rhoncus. Urna condimentum mattis pellentesque id consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Magna fringilla urna porttitor rhoncus. Urna condimentum mattis pellentesque id consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Magna fringilla urna porttitor rhoncus. Urna condimentum mattis pellentesque id consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Magna fringilla urna porttitor rhoncus. Urna condimentum mattis pellentesque id consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Magna fringilla urna porttitor rhoncus. Urna condimentum mattis pellentesque id consec...
+            </p>
+          </div> -->
+        </div>        
+
 
       <div class="holy-grail-right">
         <h2 class="text-center">Generated Route</h2>
