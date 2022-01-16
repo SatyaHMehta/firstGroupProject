@@ -56,10 +56,15 @@ function getBarVal() {
       console.log(bars.businesses[0].price);
       console.log(bars.businesses[0].review_count);
       console.log(bars.businesses[0].image_url);
+      document.getElementById('error-msg').innerHTML = '';
       var numbOfBars = bars.businesses;
       for (var i = 0; i < bars.businesses.length; i++) {
         generateCards(bars, i);
       }
+    })
+    .catch(err => {
+      document.getElementById('error-msg').setAttribute('style', 'color: red; font-weight: bold');
+      document.getElementById('error-msg').innerHTML = 'please enter a valid city';
     });
 }
 function generateCards(bars, i) {
