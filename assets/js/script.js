@@ -23,7 +23,7 @@ function getBarVal() {
         //3rd api key
         Authorization:
           "bearer PUihWdj-17gdl98pdBSeYX0398u9kpVDNov6R1RBZgSdEJo-JHYcnkesMW68cQbq20N9W-Lyq9Sy8canmTCMMFpWPU4jaucRA05M3uYOBHJMYJkvJtb2iD2F3T_gYXYx",
-      },
+      }, 
     }
   )
     .then((res) => {
@@ -100,33 +100,10 @@ formEl.addEventListener("submit", function (e) {
   if (!searchValue) {
     return ;
   }
-
+  
   inputEl.value = "";
 });
 
-// function loadLocal() {
-//   var barHistoryBtns = localStorage.getItem("barname");
-//   if (barHistoryBtns) {
-//     barName = JSON.parse(barHistoryBtns);
-//     loadLocalBtn()
-//   }
-// }
-
-// function loadLocalBtn() {
-//   for (var i = 0; i < barName.length; i++) {
-    
-//     title = barTitle[i]
-  
-//     var newBtn = document.createElement("button");
-
-//     newBtn.textContent = title;
-//     newBtn.setAttribute("id", "cardEl")
-//     newBtn.setAttribute("data-value", barAddress);
-//     newBtn.setAttribute("class", "button success expanded");
-//     newBtn.setAttribute("onclick", "removeBtn()")
-//     barHistory.append(newBtn);
-//   }
-// }
 
 
 barDiv.addEventListener("click", function (e) {
