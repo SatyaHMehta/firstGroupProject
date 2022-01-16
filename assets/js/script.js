@@ -5,6 +5,7 @@ var getRoute = document.querySelector("#generate-route");
 var clearList = document.querySelector("#clear-list");
 var barDiv = document.querySelector("#bars-div");
 var removeCard = document.querySelector("#cardEl");
+var sortableDiv = $(".sortable")
 barAddress = [];
 var addresses = [];
 var localStorageBars = [];
@@ -22,7 +23,7 @@ lastSearches.forEach((address, i) => {
   newBtn2.setAttribute("data-value", address);
   newBtn2.setAttribute("class", "button success expanded");
   newBtn2.setAttribute("onclick", "removeBtn()");
-  barHistory.append(newBtn2);
+  sortableDiv.append(newBtn2);
 });
 
 function getBarVal() {
@@ -133,7 +134,9 @@ barDiv.addEventListener("click", function (e) {
     newBtn.setAttribute("data-value", barAddress);
     newBtn.setAttribute("class", "button success expanded");
     newBtn.setAttribute("onclick", "removeBtn()");
-    barHistory.append(newBtn);
+    sortableDiv.append(newBtn)
+    
+
 
     const previousSearches = JSON.parse(localStorage.getItem("bars")) ?? [];
     const previousSearches2 = JSON.parse(localStorage.getItem("barName")) ?? [];
@@ -155,7 +158,7 @@ function removeBtn() {
 
 clearList.addEventListener("click", function (e) {
   e.preventDefault;
-  barHistory.innerHTML = "";
+  sortableDiv.html("")
 });
 
 getRoute.addEventListener("click", function (each) {

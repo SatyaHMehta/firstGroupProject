@@ -246,3 +246,7 @@ h4 {
 #bold {
   font-weight: 550;
 } */
+
+.sortable {
+  list-style-type: none;
+}
