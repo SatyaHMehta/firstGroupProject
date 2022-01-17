@@ -5,8 +5,8 @@
 
 body {
   background-image: linear-gradient(
-    rgb(104, 18, 126),
-    rgba(147, 43, 231, 0.137)
+    rgb(255, 255, 255),
+    rgba(215, 213, 216, 0.137)
   );
 }
 
@@ -112,7 +112,7 @@ body {
 
 #card {
   display: flex;
-  background-color: rgba(170, 157, 185, 0.89);
+  background-color: rgba(237, 237, 238, 0.89);
   height: fit-content;
   padding: 2%;
   align-items: center;
