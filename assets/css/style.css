@@ -209,7 +209,7 @@ h3 {
   line-height: 1em;
 }
 
-/* .responsive-blog-post p {
+.responsive-blog-post p {
   color: black;
 }
 
@@ -445,7 +445,7 @@ h4 {
 
 #bold {
   font-weight: 550;
-} */
+}
 
 .sortable {
   list-style-type: none;
