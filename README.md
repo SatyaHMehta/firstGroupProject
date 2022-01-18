@@ -48,7 +48,7 @@ link to Project Repo: https://github.com/SatyaHMehta/firstGroupProject.git
 * Satya Mehta - https://github.com/SatyaHMehta
 * Richa Anand - https://github.com/rsanand2202
 * Neal Anand - https://github.com/Anandneal
-* Mark Harrison - https://github.com/Csimonusa
+* Carlos Simon - https://github.com/Csimonusa
 
 ## License
 
