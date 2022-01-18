@@ -5,7 +5,7 @@ var getRoute = document.querySelector("#generate-route");
 var clearList = document.querySelector("#clear-list");
 var barDiv = document.querySelector("#bars-div");
 var removeCard = document.querySelector("#cardEl");
-var sortableDiv = $(".sortable")
+var sortableDiv = $(".sortable");
 barAddress = [];
 var addresses = [];
 var localStorageBars = [];
@@ -41,7 +41,7 @@ function getBarVal() {
         //3rd api key
         Authorization:
           "bearer PUihWdj-17gdl98pdBSeYX0398u9kpVDNov6R1RBZgSdEJo-JHYcnkesMW68cQbq20N9W-Lyq9Sy8canmTCMMFpWPU4jaucRA05M3uYOBHJMYJkvJtb2iD2F3T_gYXYx",
-      }, 
+      },
     }
   )
     .then((res) => {
@@ -56,15 +56,18 @@ function getBarVal() {
       console.log(bars.businesses[0].price);
       console.log(bars.businesses[0].review_count);
       console.log(bars.businesses[0].image_url);
-      document.getElementById('error-msg').innerHTML = '';
+      document.getElementById("error-msg").innerHTML = "";
       var numbOfBars = bars.businesses;
       for (var i = 0; i < bars.businesses.length; i++) {
         generateCards(bars, i);
       }
     })
-    .catch(err => {
-      document.getElementById('error-msg').setAttribute('style', 'color: red; font-weight: bold');
-      document.getElementById('error-msg').innerHTML = 'please enter a valid city';
+    .catch((err) => {
+      document
+        .getElementById("error-msg")
+        .setAttribute("style", "color: red; font-weight: bold");
+      document.getElementById("error-msg").innerHTML =
+        "please enter a valid city";
     });
 }
 function generateCards(bars, i) {
@@ -123,7 +126,7 @@ formEl.addEventListener("submit", function (e) {
   if (!searchValue) {
     return;
   }
-  
+
   inputEl.value = "";
 });
 
@@ -139,9 +142,7 @@ barDiv.addEventListener("click", function (e) {
     newBtn.setAttribute("data-value", barAddress);
     newBtn.setAttribute("class", "button success expanded");
     newBtn.setAttribute("onclick", "removeBtn()");
-    sortableDiv.append(newBtn)
-    
-
+    sortableDiv.append(newBtn);
 
     const previousSearches = JSON.parse(localStorage.getItem("bars")) ?? [];
     const previousSearches2 = JSON.parse(localStorage.getItem("barName")) ?? [];
@@ -163,14 +164,13 @@ function removeBtn() {
 
 clearList.addEventListener("click", function (e) {
   e.preventDefault;
-  sortableDiv.html("")
+  sortableDiv.html("");
 });
 
 getRoute.addEventListener("click", function (each) {
   each.preventDefault;
   const selectedBars = document.querySelectorAll("#cardEl");
   selectedBars.forEach((bar) => addresses.push(bar.getAttribute("data-value")));
-
   var map, dir;
   map = L.map("map", {
     layers: MQ.mapLayer(),
@@ -190,8 +190,9 @@ getRoute.addEventListener("click", function (each) {
       addresses[7],
       addresses[8],
       addresses[9],
-    ],
+    ]
   });
+  console.log(addresses);
   map.addLayer(
     MQ.routing.routeLayer({
       directions: dir,
@@ -199,7 +200,6 @@ getRoute.addEventListener("click", function (each) {
     })
   );
 });
-
 
 // //Wrap every letter in a span
 // var textWrapper = document.querySelector('.heading');
@@ -222,5 +222,3 @@ getRoute.addEventListener("click", function (each) {
 //     easing: "easeOutExpo",
 //     delay: 1000
 //   });
-
-
