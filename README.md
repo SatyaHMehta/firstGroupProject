@@ -39,7 +39,10 @@ link to Project Repo: https://github.com/SatyaHMehta/firstGroupProject.git
 
 **Images of App:**
 
-(insert images once styling is done)
+![image](https://user-images.githubusercontent.com/93950592/149961484-7717fd35-0ebc-4b6b-a7cc-69f2c5e0608d.png)
+![image](https://user-images.githubusercontent.com/93950592/149961579-ef01d7fc-3211-43f8-9d5e-839ff1104393.png)
+![image](https://user-images.githubusercontent.com/93950592/149961658-5f2f71dd-fa60-41c7-b75b-099ffcb1948a.png)
+![image](https://user-images.githubusercontent.com/93950592/149961761-5e1636d3-2d4d-4462-8337-1e2bb956a7b1.png)
 
 ## Contributing
 * Satya Mehta - https://github.com/SatyaHMehta
