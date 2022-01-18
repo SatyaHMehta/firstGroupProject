@@ -86,7 +86,7 @@ function generateCards(bars, i) {
   addBtn.innerHTML = "Add";
   addBtn.classList.add("addBtn");
   barCardEl.appendChild(addBtn);
-
+  rating = bars.businesses[i].rating
   let barInfo = [
     document.createElement("h2"),
     document.createElement("span"),
@@ -100,9 +100,9 @@ function generateCards(bars, i) {
     bars.businesses[i].location.display_address[0] +
       " " +
       bars.businesses[i].location.display_address[1],
-    bars.businesses[i].phone,
-    bars.businesses[i].rating,
-    bars.businesses[i].review_count,
+    'phone: ' + bars.businesses[i].phone,
+    'rating: ' + `${"⭐"}`.repeat(Math.round(rating)),
+    'reviews: ' + bars.businesses[i].review_count,
   ];
 
   let barId = [
@@ -222,3 +222,4 @@ getRoute.addEventListener("click", function (each) {
 //     easing: "easeOutExpo",
 //     delay: 1000
 //   });
+
