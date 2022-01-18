@@ -83,6 +83,7 @@ body {
   justify-content: center;
   padding-left: 1%;
   justify-content: space-around;
+  overflow: auto;
   /* overflow: auto; */
 }
 
@@ -117,6 +118,7 @@ body {
   padding: 2%;
   align-items: center;
   border: rgba(2, 2, 2, 0.377) solid;
+  border-radius: 3%;
   width: 20rem;
   flex-wrap: wrap;
   margin-bottom: 5%;
