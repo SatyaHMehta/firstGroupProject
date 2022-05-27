@@ -109,12 +109,11 @@ body {
 }
 
 #map {
-  height: 56vh;
-  width: 100%;
-  position: relative;
+  height: 570px;
+  width: 465px;
+  position: absolute;
   margin-top: 5%;
-  display: flex;
-  justify-content: center;
+  bottom: 100px;
 }
 
 #card {
@@ -517,5 +516,61 @@ h4 {
 @keyframes light {
   to {
     transform: translate(50%, 50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .holy-grail-grid {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+  }
+  .neon {
+    display: none
+  }
+  .nav {
+    height: 90px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .heading {
+    position: relative;
+    bottom: 40px;
+  }
+  .holy-grail-left > h2{
+    display: none;
+
+  }
+  .holy-grail-left{
+    border: none;
+    padding: 0 20px;
+  }
+  .holy-grail-right{
+    position: absolute;
+    bottom: 351px;
+    right: 16px;
+    width: 100%;
+    border: none;
+  }
+  .holy-grail-right > h2 {
+    display: none;
+  }
+  #map{
+    display: flex;
+    justify-self: center;
+    height: 300px;
+    padding: 0;
+    margin: 0
+  }
+  .holy-grail-footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  #icon{
+    right: 4%;
   }
 }
