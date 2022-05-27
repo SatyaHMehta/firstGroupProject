@@ -33,7 +33,7 @@ Our goal was to build a app that would allow a user to enter a city in the searc
 
 ## Usage 
 
-link to deployed application: https://satyahmehta.github.io/firstGroupProject/
+link to deployed application: https://barhop-three.vercel.app/
 
 link to Project Repo: https://github.com/SatyaHMehta/firstGroupProject.git
 
