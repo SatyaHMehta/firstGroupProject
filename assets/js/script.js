@@ -10,6 +10,8 @@ barAddress = [];
 var addresses = [];
 var localStorageBars = [];
 var localStorageBarNames = [];
+const barLocation = {};
+const waypts = [];
 
 const lastSearches = JSON.parse(localStorage.getItem("bars")) ?? [];
 const lastSearches2 = JSON.parse(localStorage.getItem("barName")) ?? [];
@@ -25,6 +27,57 @@ lastSearches.forEach((address, i) => {
   newBtn2.setAttribute("onclick", "removeBtn()");
   sortableDiv.append(newBtn2);
 });
+
+//set map options
+var myLatLng = { lat: 38.346, lng: -0.4907 };
+var mapOptions = {
+  center: myLatLng,
+  zoom: 7,
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+};
+
+//create map
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+//create a DirectionsService object to use the route method and get a result for our request
+var directionsService = new google.maps.DirectionsService();
+
+//create a DirectionsRenderer object which we will use to display the route
+var directionsDisplay = new google.maps.DirectionsRenderer();
+
+//bind the DirectionsRenderer to the map
+directionsDisplay.setMap(map);
+
+//define calcRoute function
+function calcRoute() {
+  //create request
+  var request = {
+    origin: addresses[0],
+    destination: addresses[addresses.length - 1],
+    waypoints: waypts,
+    optimizeWaypoints: true,
+    travelMode: google.maps.TravelMode.WALKING, //WALKING, BYCYCLING, TRANSIT
+    unitSystem: google.maps.UnitSystem.IMPERIAL,
+  };
+
+  //pass the request to the route method
+  directionsService.route(request, function (result, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      //display route
+      directionsDisplay.setDirections(result);
+    } else {
+      //delete route from map
+      directionsDisplay.setDirections({ routes: [] });
+      //center map in London
+      map.setCenter(myLatLng);
+
+      //show error message
+      output.innerHTML =
+        "<div class='alert-danger'><i class='fas fa-exclamation-triangle'></i> Could not retrieve driving distance.</div>";
+    }
+  });
+}
+
 
 function getBarVal() {
   localStorage.clear();
@@ -49,13 +102,15 @@ function getBarVal() {
     })
     .then((bars) => {
       console.log(bars);
-      console.log(bars.businesses[0].location.address1);
-      console.log(bars.businesses[0].name);
-      console.log(bars.businesses[0].phone);
-      console.log(bars.businesses[0].rating);
-      console.log(bars.businesses[0].price);
-      console.log(bars.businesses[0].review_count);
-      console.log(bars.businesses[0].image_url);
+      barLocation.latitude = bars.region.center.latitude;
+      barLocation.longitude = bars.region.center.longitude;
+      // console.log(bars.businesses[0].location.address1);
+      // console.log(bars.businesses[0].name);
+      // console.log(bars.businesses[0].phone);
+      // console.log(bars.businesses[0].rating);
+      // console.log(bars.businesses[0].price);
+      // console.log(bars.businesses[0].review_count);
+      // console.log(bars.businesses[0].image_url);
       document.getElementById("error-msg").innerHTML = "";
       var numbOfBars = bars.businesses;
       for (var i = 0; i < bars.businesses.length; i++) {
@@ -71,6 +126,11 @@ function getBarVal() {
     });
 }
 function generateCards(bars, i) {
+  let barLocation = {
+    latitude: bars.businesses[i].coordinates.latitude,
+    longitude: bars.businesses[i].coordinates.longitude,
+  };
+  console.log(barLocation);
   let barsDivEl = document.getElementById("bars-div");
   let barCardEl = document.createElement("div");
   barCardEl.setAttribute("id", "card");
@@ -86,7 +146,7 @@ function generateCards(bars, i) {
   addBtn.innerHTML = "Add";
   addBtn.classList.add("addBtn");
   barCardEl.appendChild(addBtn);
-  rating = bars.businesses[i].rating
+  rating = bars.businesses[i].rating;
   let barInfo = [
     document.createElement("h2"),
     document.createElement("span"),
@@ -100,9 +160,9 @@ function generateCards(bars, i) {
     bars.businesses[i].location.display_address[0] +
       " " +
       bars.businesses[i].location.display_address[1],
-    'phone: ' + bars.businesses[i].phone,
-    'rating: ' + `${"⭐"}`.repeat(Math.round(rating)),
-    'reviews: ' + bars.businesses[i].review_count,
+    "phone: " + bars.businesses[i].phone,
+    "rating: " + `${"⭐"}`.repeat(Math.round(rating)),
+    "reviews: " + bars.businesses[i].review_count,
   ];
 
   let barId = [
@@ -114,6 +174,8 @@ function generateCards(bars, i) {
   ];
   barInfo.forEach((element, i) => {
     element.setAttribute("id", barId[i]);
+    element.setAttribute("latitude", barLocation.latitude);
+    element.setAttribute("longitude", barLocation.longitude);
     element.textContent = barData[i];
     barInfoEl.appendChild(element);
   });
@@ -135,10 +197,18 @@ barDiv.addEventListener("click", function (e) {
     var clickedBtn = e.target;
     var barName = clickedBtn.parentElement.children[1].children[0].innerHTML;
     var barAddress = clickedBtn.parentElement.children[1].children[1].innerHTML;
+    var barLatitude =
+      clickedBtn.parentElement.children[1].children[0].getAttribute("latitude");
+    var barLongitude =
+      clickedBtn.parentElement.children[1].children[0].getAttribute(
+        "longitude"
+      );
     var newBtn = document.createElement("button");
 
     newBtn.textContent = barName;
     newBtn.setAttribute("id", "cardEl");
+    newBtn.setAttribute("latitude", barLatitude);
+    newBtn.setAttribute("longitude", barLongitude);
     newBtn.setAttribute("data-value", barAddress);
     newBtn.setAttribute("class", "button success expanded");
     newBtn.setAttribute("onclick", "removeBtn()");
@@ -165,61 +235,28 @@ function removeBtn() {
 clearList.addEventListener("click", function (e) {
   e.preventDefault;
   sortableDiv.html("");
+  localStorage.clear()
 });
 
-getRoute.addEventListener("click", function (each) {
-  each.preventDefault;
+// create directions service object to use the route method and get a result for our request.
+
+// let directionsService = new google.maps.DirectionService();
+
+getRoute.addEventListener("click", function (e) {
+  ;
+  address = [];
   const selectedBars = document.querySelectorAll("#cardEl");
+  console.log(selectedBars);
   selectedBars.forEach((bar) => addresses.push(bar.getAttribute("data-value")));
-  var map, dir;
-  map = L.map("map", {
-    layers: MQ.mapLayer(),
-    center: [38.895345, -77.030101],
-    zoom: 15,
-  });
-  dir = MQ.routing.directions();
-  dir.route({
-    locations: [
-      addresses[0],
-      addresses[1],
-      addresses[2],
-      addresses[3],
-      addresses[4],
-      addresses[5],
-      addresses[6],
-      addresses[7],
-      addresses[8],
-      addresses[9],
-    ]
-  });
-  console.log(addresses);
-  map.addLayer(
-    MQ.routing.routeLayer({
-      directions: dir,
-      fitBounds: true,
-    })
-  );
+  if (selectedBars.length > 1) {
+    for (let i = 1; i < selectedBars.length - 1; i++) {
+      waypts.push({
+        location: selectedBars[i].getAttribute("data-value"),
+        stopover: true,
+      });
+    }
+    console.log(waypts);
+  }
+  console.log(addresses[0], addresses[addresses.length - 1]);
+  calcRoute(addresses[0], addresses[addresses.length - 1]);
 });
-
-// //Wrap every letter in a span
-// var textWrapper = document.querySelector('.heading');
-// textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-// anime.timeline({loop: true})
-//   .add({
-//     targets: '.heading .letter',
-//     scale: [4,1],
-//     opacity: [0,1],
-//     translateZ: 0,
-//     easing: "easeOutExpo",
-//     duration: 1950,
-//     delay: (el, i) => 70*i
-//   })
-//   .add({
-//     targets: '.heading',
-//     opacity: 0,
-//     duration: 1000,
-//     easing: "easeOutExpo",
-//     delay: 1000
-//   });
-
